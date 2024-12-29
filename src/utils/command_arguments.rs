@@ -1,4 +1,4 @@
-use clap::{Args, Parser, Subcommand};
+use clap::{Args, Parser, Subcommand, ValueEnum};
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about)]
@@ -84,6 +84,7 @@ pub enum ScaffoldSubCommand {
     AnchorTS(GetDir),
     /// Scaffold an Anchor project with Rust Tests
     AnchorRust(GetDir),
+    React(CreateReactSubCommand),
 }
 
 // ----------------
@@ -122,11 +123,29 @@ pub enum InstallSubCommand {
 // --------------------------------------
 // GetDir: For passing the directory name
 // --------------------------------------
-#[derive(Debug, Args)]
+#[derive(Debug, Args,)]
 pub struct GetDir {
     /// Specifies the name of the project directory to initialize
     pub dir_name: String,
 }
+
+
+// for passing both the directory name and the language of choice
+#[derive(Debug, Args,)]
+pub struct CreateReactSubCommand {
+    pub dir_name: String, // Specifies the name of the project directory to initialize
+
+    #[clap(long , short)] // this is used purposely for explicit choice when dealing with the argument via terminal hence --lan t or --lan=t
+    pub lan: ReactVariant, // specifies the language of choice for the project
+}
+
+// to choose the language variants
+#[derive(Debug, ValueEnum, Clone)]
+pub enum ReactVariant {
+    J, // javascript
+    T, // typescript
+}
+
 
 #[derive(Debug, Args)]
 pub struct Version {
