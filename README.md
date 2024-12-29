@@ -48,8 +48,7 @@ resolver-cli get dfd project_name
 
 
 The `scaffold` action is used to scaffold projects for different development tools and languages which includes:
-- ReactJS
-- ReactTs
+- React
 - Hardhat
 - NestJs
 - Laravel
@@ -65,13 +64,13 @@ The `scaffold` action is used to scaffold projects for different development too
 #### ReactJS
 Creates a React project with JavaScript
 ```sh
-resolver-cli scaffold reactjs project_name
+resolver-cli scaffold react <project_name> --lan=j
 ```
 
 #### ReactTS
 Creates a React project with TypeScript
 ```sh
-resolver-cli scaffold reactts project_name
+resolver-cli scaffold react <project_name> --lan=t
 ```
 
 #### Hardhat

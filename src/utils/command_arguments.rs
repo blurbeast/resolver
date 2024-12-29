@@ -1,4 +1,4 @@
-use clap::{Args, Parser, Subcommand};
+use clap::{Args, Parser, Subcommand, ValueEnum};
 
 #[derive(Debug, Parser)]
 #[clap(author, version, about)]
@@ -53,9 +53,9 @@ pub struct ScaffoldCommand {
 #[derive(Debug, Subcommand)]
 pub enum ScaffoldSubCommand {
     /// Scaffolds a create-react-app JavaScript project
-    Reactjs(GetDir),
-    /// Scaffolds a create-react-app TypeScript project
-    Reactts(GetDir),
+    // Reactjs(GetDir),
+    // /// Scaffolds a create-react-app TypeScript project
+    // Reactts(GetDir),
     /// Scaffolds a Hardhat project
     Hardhat(GetDir),
     /// Scaffolds a NestJS project
@@ -84,6 +84,8 @@ pub enum ScaffoldSubCommand {
     AnchorTS(GetDir),
     /// Scaffold an Anchor project with Rust Tests
     AnchorRust(GetDir),
+    // scaffold a react project
+    React(CreateReactSubCommand),
 }
 
 // ----------------
@@ -122,11 +124,31 @@ pub enum InstallSubCommand {
 // --------------------------------------
 // GetDir: For passing the directory name
 // --------------------------------------
-#[derive(Debug, Args)]
+#[derive(Debug, Args,)]
 pub struct GetDir {
     /// Specifies the name of the project directory to initialize
     pub dir_name: String,
 }
+
+
+// for passing both the directory name and the language of choice
+// the args is an inbuilt library from clap used to take input from the terminal
+#[derive(Debug, Args,)]
+pub struct CreateReactSubCommand {
+    pub dir_name: String, // Specifies the name of the project directory to initialize
+
+    #[clap(long , short)] // this is used purposely for explicit choice when dealing with the argument via terminal hence --lan t or --lan=t
+    pub lan: ReactVariants, // specifies the language of choice for the project
+}
+
+// to choose the language variants
+// the valueEnum , just like the Args is a library from clap used to take argument from the terminal
+#[derive(Debug, ValueEnum, Clone)]
+pub enum ReactVariants {
+    J, // javascript
+    T, // typescript
+}
+
 
 #[derive(Debug, Args)]
 pub struct Version {
