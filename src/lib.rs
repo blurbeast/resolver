@@ -61,22 +61,6 @@ pub fn resolve(args: ClapperArgs) -> Result<(), Box<dyn Error>> {
         },
         EntityType::Scaffold(scaffold_command) => {
             match scaffold_command.command {
-                ScaffoldSubCommand::Reactjs(dir) => {
-                    match create_react_app(dir.dir_name.clone()) {
-                        Ok(_) => println!("{}", "Successfully created the React project!".bright_blue()),
-                        Err(e) => {
-                            return  Err(e);
-                        }
-                    }
-                },
-                ScaffoldSubCommand::Reactts(dir) => {
-                    match create_react_app_with_typescript(dir.dir_name.clone()) {
-                        Ok(_) => println!("{}", "Successfully created the TypeScript React project!".bright_blue()),
-                        Err(e) => {
-                            return  Err(e);
-                        }
-                    }
-                },
                 ScaffoldSubCommand::React(user_choice) => {
                    match user_choice.lan {
                        ReactVariants::J => {
