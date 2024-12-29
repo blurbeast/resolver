@@ -53,9 +53,9 @@ pub struct ScaffoldCommand {
 #[derive(Debug, Subcommand)]
 pub enum ScaffoldSubCommand {
     /// Scaffolds a create-react-app JavaScript project
-    Reactjs(GetDir),
-    /// Scaffolds a create-react-app TypeScript project
-    Reactts(GetDir),
+    // Reactjs(GetDir),
+    // /// Scaffolds a create-react-app TypeScript project
+    // Reactts(GetDir),
     /// Scaffolds a Hardhat project
     Hardhat(GetDir),
     /// Scaffolds a NestJS project
