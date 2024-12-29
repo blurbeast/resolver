@@ -84,6 +84,7 @@ pub enum ScaffoldSubCommand {
     AnchorTS(GetDir),
     /// Scaffold an Anchor project with Rust Tests
     AnchorRust(GetDir),
+    // scaffold a react project
     React(CreateReactSubCommand),
 }
 
@@ -131,17 +132,19 @@ pub struct GetDir {
 
 
 // for passing both the directory name and the language of choice
+// the args is an inbuilt library from clap used to take input from the terminal
 #[derive(Debug, Args,)]
 pub struct CreateReactSubCommand {
     pub dir_name: String, // Specifies the name of the project directory to initialize
 
     #[clap(long , short)] // this is used purposely for explicit choice when dealing with the argument via terminal hence --lan t or --lan=t
-    pub lan: ReactVariant, // specifies the language of choice for the project
+    pub lan: ReactVariants, // specifies the language of choice for the project
 }
 
 // to choose the language variants
+// the valueEnum , just like the Args is a library from clap used to take argument from the terminal
 #[derive(Debug, ValueEnum, Clone)]
-pub enum ReactVariant {
+pub enum ReactVariants {
     J, // javascript
     T, // typescript
 }

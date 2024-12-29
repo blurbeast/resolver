@@ -79,7 +79,7 @@ pub fn resolve(args: ClapperArgs) -> Result<(), Box<dyn Error>> {
                 },
                 ScaffoldSubCommand::React(user_choice) => {
                    match user_choice.lan {
-                       ReactVariant::J => {
+                       ReactVariants::J => {
                            println!("javascript was chosen as the project language");
                            match create_react_app(user_choice.dir_name.clone()) {
                                Ok(_) => println!("{}", "Successfully created the React project!".bright_blue()),
@@ -88,7 +88,7 @@ pub fn resolve(args: ClapperArgs) -> Result<(), Box<dyn Error>> {
                                }
                            }
                        },
-                       ReactVariant::T => {
+                       ReactVariants::T => {
                            println!("typescript was chosen as the project language");
                            match create_react_app_with_typescript(user_choice.dir_name.clone()) {
                                Ok(_) => println!("{}", "Successfully created the React project!".bright_blue()),
