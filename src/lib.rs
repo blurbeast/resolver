@@ -4,9 +4,10 @@ use std::error::Error;
 use colored::*;
 
 pub mod utils;
-use utils::helpers::*;
-use utils::constants::*;
-pub use utils::command_arguments::*;
+pub use utils::{command_arguments::*, 
+                constants::*, 
+                helpers::{scaffold::*, installer::*
+            }};
 
 
 pub fn resolve(args: ClapperArgs) -> Result<(), Box<dyn Error>> {

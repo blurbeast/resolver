@@ -1,6 +1,5 @@
 
-use std::error::Error;
-use std::fs;
+
 use std::io::Error as OutputError;
 use std::process::{Command, Output};
 
