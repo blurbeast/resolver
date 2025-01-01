@@ -1,3 +1,8 @@
+use std::error::Error;
+use std::fs;
+use std::io::Error as OutputError;
+use std::process::{Command, Output};
+use crate::utils::helpers::checkers::*;
 
 pub fn create_react_app(project_name: String) -> Result<(), Box<dyn Error>> {
     if !is_npm_installed() {
